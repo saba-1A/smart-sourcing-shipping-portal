@@ -1,28 +1,29 @@
 <template>
-  <div>
-    <h2>Shipping Rate Calculator</h2>
-    <form @submit.prevent="calculateShipping">
-      <input v-model.number="weight" type="number" placeholder="Weight (kg)" required />
-      <select v-model="region" required>
-        <option disabled value="">Select Region</option>
-        <option>North America</option>
-        <option>Europe</option>
-        <option>Asia</option>
-        <option>Australia</option>
-      </select>
-      <select v-model="method" required>
-        <option disabled value="">Select Shipping Method</option>
-        <option>Air</option>
-        <option>Sea</option>
-        <option>Land</option>
-      </select>
-      <button type="submit">Calculate</button>
-    </form>
-
-    <div v-if="result" style="margin-top: 1rem;">
-      <p>📦 Estimated Shipping Cost: <strong>₹{{ result.cost }}</strong></p>
+  <div class="center-container">
+    <div>
+      <h2>Shipping Rate Calculator</h2>
+      <form @submit.prevent="calculateShipping">
+        <input v-model.number="weight" type="number" placeholder="Weight (kg)" required />
+        <select v-model="region" required>
+          <option disabled value="">Select Region</option>
+          <option>North America</option>
+          <option>Europe</option>
+          <option>Asia</option>
+          <option>Australia</option>
+        </select>
+        <select v-model="method" required>
+          <option disabled value="">Select Shipping Method</option>
+          <option>Air</option>
+          <option>Sea</option>
+          <option>Land</option>
+        </select>
+        <button type="submit">Calculate</button>
+      </form>
+      <div v-if="result" style="margin-top: 1rem;">
+        <p>📦 Estimated Shipping Cost: <strong>₹{{ result.cost }}</strong></p>
+      </div>
+      <p v-if="error" style="color: red;">{{ error }}</p>
     </div>
-    <p v-if="error" style="color: red;">{{ error }}</p>
   </div>
 </template>
 
@@ -44,7 +45,6 @@ export default {
         this.error = 'Please log in to calculate shipping.';
         return;
       }
-
       try {
         const response = await fetch('http://localhost:5272/api/Shipping/calculate', {
           method: 'POST',
@@ -58,9 +58,7 @@ export default {
             method: this.method
           })
         });
-
         const data = await response.json();
-
         if (response.ok) {
           this.result = data;
           this.error = '';
@@ -77,3 +75,14 @@ export default {
   }
 };
 </script>
+
+<style>
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Adjusted to flex-start */
+  height: 100vh; /* Adjust as needed */
+  width: 100vw; /* Adjust as needed */
+  margin-top: 50px; /* Adjust as needed */
+}
+</style>

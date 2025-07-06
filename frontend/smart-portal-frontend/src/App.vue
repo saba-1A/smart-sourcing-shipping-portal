@@ -6,15 +6,13 @@
       <router-link to="/login">Login</router-link> |
       <router-link to="/sourcing">Sourcing</router-link> |
       <router-link to="/profile">Profile</router-link> |
-      <router-link to="/shipping">Shipping Calculator</router-link> | 
-      <router-link to="/tracking">Tracking</router-link>
+      <router-link to="/shipping">Shipping Calculator</router-link> |
+      <router-link to="/tracking">Tracking</router-link> |
+      <router-link to="/admin-analytics">Analytics</router-link>|
+      <router-link to="/chatbot">☁️ Chatbot</router-link>
     </nav>
-    <hr />
+    <hr /> 
     <router-view />
   </div>
 </template>
-
-<script>
-export default {};
-</script>
 

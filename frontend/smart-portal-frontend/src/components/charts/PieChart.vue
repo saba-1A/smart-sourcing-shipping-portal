@@ -1,20 +1,25 @@
 <template>
-  <Pie v-if="chartData" :data="chartData" :options="options" />
+  <div>
+    <Doughnut v-if="chartData" :data="chartData" :options="chartOptions" />
+  </div>
 </template>
 
 <script setup>
-import { Pie } from 'vue-chartjs'
+import { Doughnut } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js'
-
-defineProps(['chartData'])
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement)
 
-const options = {
+const props = defineProps({
+  chartData: Object
+})
+
+const chartOptions = {
   responsive: true,
   plugins: {
-    legend: { position: 'top' },
-    title: { display: true, text: 'Package Status Distribution' }
+    legend: {
+      position: 'bottom'
+    }
   }
 }
 </script>

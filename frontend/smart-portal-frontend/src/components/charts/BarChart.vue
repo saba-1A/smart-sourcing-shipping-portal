@@ -1,20 +1,25 @@
 <template>
-  <Bar v-if="chartData" :data="chartData" :options="options" />
+  <div>
+    <Bar v-if="chartData" :data="chartData" :options="chartOptions" />
+  </div>
 </template>
 
 <script setup>
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
-defineProps(['chartData'])
-
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const options = {
+const props = defineProps({
+  chartData: Object
+})
+
+const chartOptions = {
   responsive: true,
   plugins: {
-    legend: { position: 'top' },
-    title: { display: true, text: 'Logistics Analytics' }
+    legend: {
+      position: 'top'
+    }
   }
 }
 </script>

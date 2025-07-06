@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <h2>Signup</h2>
-    <form @submit.prevent="signup">
-      <input v-model="username" placeholder="Username" required />
-      <input v-model="email" type="email" placeholder="Email" required />
-      <input v-model="password" type="password" placeholder="Password" required />
-      <button type="submit">Register</button>
-    </form>
-    <p v-if="message" style="color: green;">{{ message }}</p>
-    <p v-if="error" style="color: red;">{{ error }}</p>
+  <div class="center-container">
+    <div>
+      <h2>Signup</h2>
+      <form @submit.prevent="signup">
+        <input v-model="username" placeholder="Username" required />
+        <input v-model="email" type="email" placeholder="Email" required />
+        <input v-model="password" type="password" placeholder="Password" required />
+        <button type="submit">Register</button>
+      </form>
+      <p v-if="message" style="color: green;">{{ message }}</p>
+      <p v-if="error" style="color: red;">{{ error }}</p>
+    </div>
   </div>
 </template>
 
@@ -37,18 +39,15 @@ export default {
             role: 'user'
           })
         });
-
         // Handle JSON or plain text response
         const contentType = res.headers.get('content-type');
         let data;
-
         if (contentType && contentType.includes('application/json')) {
           data = await res.json();
         } else {
           const text = await res.text(); // fallback to plain text
           data = { message: text };
         }
-
         if (res.ok) {
           this.message = data.message || 'Signup successful!';
           this.error = '';
@@ -65,3 +64,13 @@ export default {
 };
 </script>
 
+<style>
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Adjusted to flex-start */
+  height: 100vh; /* Adjust as needed */
+  width: 100vw; /* Adjust as needed */
+  margin-top: 50px; /* Adjust as needed */
+}
+</style>

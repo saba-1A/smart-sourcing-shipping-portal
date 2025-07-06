@@ -1,27 +1,24 @@
 <template>
-  <Line v-if="chartData" :data="chartData" :options="options" />
+  <div>
+    <Line v-if="chartData" :data="chartData" :options="chartOptions" />
+  </div>
 </template>
 
 <script setup>
 import { Line } from 'vue-chartjs'
-import {
-  Chart as ChartJS, Title, Tooltip, Legend,
-  LineElement, PointElement, CategoryScale, LinearScale
-} from 'chart.js'
+import { Chart as ChartJS, Title, Tooltip, Legend, LineElement, PointElement, CategoryScale, LinearScale } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, PointElement, CategoryScale, LinearScale)
 
-// Accept prop
-defineProps({
+const props = defineProps({
   chartData: Object
 })
 
-const options = {
+const chartOptions = {
   responsive: true,
   plugins: {
-    title: {
-      display: true,
-      text: 'User vs Request Overview'
+    legend: {
+      position: 'top'
     }
   }
 }

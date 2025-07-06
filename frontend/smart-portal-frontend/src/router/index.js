@@ -7,7 +7,8 @@ import SourcingRequestPage from '../pages/SourcingRequestPage.vue'
 import ShippingCalculatorPage from '../pages/ShippingCalculatorPage.vue'
 import TrackingDashboardPage from '../pages/TrackingDashboardPage.vue'
 import AdminPanel from '../pages/AdminPanel.vue'
-import AdminDashboard from '../pages/AdminDashboard.vue'
+import AdminAnalytics from '../pages/AdminAnalytics.vue'
+import ChatbotPage from '../pages/ChatbotPage.vue' // ✅ Added
 
 const routes = [
   { path: '/login', name: 'Login', component: LoginPage },
@@ -17,7 +18,13 @@ const routes = [
   { path: '/shipping', name: 'Shipping', component: ShippingCalculatorPage },
   { path: '/tracking', name: 'Tracking', component: TrackingDashboardPage },
   { path: '/admin', name: 'Admin', component: AdminPanel },
-  { path: '/admin-dashboard', name: 'AdminDashboard', component: AdminDashboard }
+  {
+    path: '/admin-analytics',
+    name: 'AdminAnalytics',
+    component: AdminAnalytics,
+    meta: { requiresAuth: true, requiresAdmin: true }
+  },
+  { path: '/chatbot', name: 'Chatbot', component: ChatbotPage } // ✅ Added chatbot route
 ]
 
 const router = createRouter({

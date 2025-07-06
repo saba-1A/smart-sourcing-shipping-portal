@@ -3,25 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SmartPortalApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "admin")] // 👑 Admin only
+    [Route("api/[controller]")]
     public class AnalyticsController : ControllerBase
     {
         [HttpGet("summary")]
+        [Authorize]
+
         public IActionResult GetSummary()
         {
-            // 🧪 Fake analytics data
-            var data = new
+            // Dummy data – replace with real database logic
+            var result = new
             {
-                totalUsers = 12,
-                totalRequests = 28,
-                shipped = 10,
-                delivered = 7,
-                pending = 11
+                totalUsers = 150,
+                totalRequests = 320,
+                pending = 70,
+                shipped = 180,
+                delivered = 70
             };
 
-            return Ok(data);
+            return Ok(result);
         }
     }
 }
