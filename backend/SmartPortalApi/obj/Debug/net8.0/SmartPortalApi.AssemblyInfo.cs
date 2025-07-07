@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartPortalApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6cf5be39dd79b6da5a4f010069c5dd86db3b8dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f925a92aba2cc645bc5f203a15fd10f40374f95")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartPortalApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartPortalApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
